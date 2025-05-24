@@ -2,7 +2,7 @@ import axios from "axios";
 import { clearAccessToken } from "./utils";
 import { refreshAccessToken } from "@/services/refreshAccessToken";
 
-const BASE_URL = "http://localhost:8000/api";
+const BASE_URL = "https://be-nodejs-three.vercel.app/api";
 
 let accessToken: string | null = null;
 
