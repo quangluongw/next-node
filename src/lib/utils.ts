@@ -32,8 +32,7 @@ export async function initAccessToken(): Promise<string | null> {
   }
 
   try {
-    // Gọi API refresh token (cookie refreshToken tự kèm theo request)
-    const res = await axiosClient.post("http://localhost:8000/api/refresh-token", {
+    const res = await axiosClient.post("/refresh-token", {
       withCredentials: true,
     });
 
