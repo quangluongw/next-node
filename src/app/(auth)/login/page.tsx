@@ -5,7 +5,6 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { loginWithEmail } from "@/app/actions/auth/login";
-import { toast } from "sonner";
 import { User } from "@/types/user";
 export default function Login() {
   const router = useRouter();
@@ -23,7 +22,6 @@ export default function Login() {
       await loginWithEmail(values);
       router.refresh();
       router.push("/");
-      toast.success("Đăng nhập thành công")
     } catch (error) {
       console.log(error);
       

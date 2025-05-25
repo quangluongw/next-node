@@ -9,6 +9,9 @@ let accessToken: string | null = null;
 const axiosClient = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 axiosClient.interceptors.request.use(
@@ -38,7 +41,7 @@ axiosClient.interceptors.response.use(
       } catch (err) {
         // ❌ Không có refresh-token hoặc token lỗi
         clearAccessToken(); // Xoá token, clear state
-        window.location.href='/login'  // 👉 Chuyển về trang login
+        window.location.href = "/login"; // 👉 Chuyển về trang login
         return Promise.reject(err);
       }
     }

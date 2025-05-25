@@ -12,8 +12,6 @@ interface LoginResponse {
   token: string;
 }
 
-
-
 export const loginWithEmail = async ({
   email,
   password,
@@ -24,8 +22,10 @@ export const loginWithEmail = async ({
       { email, password },
       { withCredentials: true }
     );
-    localStorage.setItem("user", res.data.user);
+    
+    localStorage.setItem("user", JSON.stringify(res.data.user));
     localStorage.setItem("token", res.data.token);
+    toast("Đăng nhập thành công");
   } catch (error: unknown) {
     if (isAxiosErrorResponse(error)) {
       toast(error.response?.data?.message || "Đăng nhập thất bại");

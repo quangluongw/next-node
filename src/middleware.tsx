@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import {jwtDecode} from "jwt-decode";
 
-// Định nghĩa kiểu cho payload JWT
 interface TokenPayload {
   id: string;
   email: string;
