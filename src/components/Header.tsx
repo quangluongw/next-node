@@ -11,11 +11,14 @@ export default function Header() {
   const [user, setUser] = useState<User>();
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const data = localStorage.getItem("user") || "";
+      const data = localStorage.getItem("user");
 
-      setUser(JSON.parse(data));
+      if (data) {
+        setUser(JSON.parse(data));
+      }
     }
   }, []);
+
   const Logout = async () => {
     await logout();
   };
@@ -39,9 +42,8 @@ export default function Header() {
             <Link href="/login">Login</Link>
           </li>
           <li className="cursor-pointer hover:text-[#EBB12D]">
-            <Link href="resume">Resume</Link>
+            <Link href="/cart">Cart</Link>
           </li>
-
           <div className="flex flex-row gap-3">
             {user?.role && (
               <li className="cursor-pointer hover:text-[#EBB12D]">

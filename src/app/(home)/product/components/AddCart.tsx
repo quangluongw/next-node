@@ -1,8 +1,7 @@
 "use client";
 
 import { addCart } from "@/services/cart";
-import { toast } from "sonner";
-
+import { Button } from "antd";
 export default function AddCart({
   id,
   quantity,
@@ -10,19 +9,22 @@ export default function AddCart({
   id: string;
   quantity: number;
 }) {
-  const userid = localStorage.getItem("user") || "";
+  const userString = localStorage.getItem("user") || "";
+  const user = JSON.parse(userString);
+
   const addtocart = () => {
     const data = {
       productid: id,
       quantity: quantity,
     };
 
-    addCart(userid, data);
-    toast("Thành công");
+    addCart(user._id, data);
   };
   return (
     <div>
-      <button onClick={addtocart}>Add To Cart</button>
+      <Button className="w-full" onClick={addtocart}>
+        Add To Cart
+      </Button>
     </div>
   );
 }
